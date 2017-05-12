@@ -43,7 +43,8 @@ class NotificationHelper extends ContextWrapper {
      */
     public NotificationHelper(Context context) {
         super(context);
-
+        // TODO Explicitly set badging to true for the direct message channel and false for the
+        // followers channel
         // Create the channel object with the unique ID FOLLOWERS_CHANNEL
         NotificationChannel followersChannel =
                 new NotificationChannel(
