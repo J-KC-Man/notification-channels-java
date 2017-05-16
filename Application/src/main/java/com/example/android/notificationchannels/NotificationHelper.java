@@ -43,8 +43,7 @@ class NotificationHelper extends ContextWrapper {
      */
     public NotificationHelper(Context context) {
         super(context);
-        // TODO Explicitly set badging to true for the direct message channel and false for the
-        // followers channel
+
         // Create the channel object with the unique ID FOLLOWERS_CHANNEL
         NotificationChannel followersChannel =
                 new NotificationChannel(
@@ -55,6 +54,7 @@ class NotificationHelper extends ContextWrapper {
         // Configure the channel's initial settings
         followersChannel.setLightColor(Color.GREEN);
         followersChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 500, 200, 500});
+        followersChannel.setShowBadge(false);
 
         // Submit the notification channel object to the notification manager
         getNotificationManager().createNotificationChannel(followersChannel);
@@ -66,6 +66,7 @@ class NotificationHelper extends ContextWrapper {
                         getString(R.string.notification_channel_direct_message),
                         NotificationManager.IMPORTANCE_HIGH);
         dmChannel.setLightColor(Color.BLUE);
+        dmChannel.setShowBadge(true);
         getNotificationManager().createNotificationChannel(dmChannel);
     }
 
